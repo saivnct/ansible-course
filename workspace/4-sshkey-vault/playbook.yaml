@@ -1,0 +1,7 @@
+- name: install python
+  hosts: servers
+  strategy: free
+  roles:
+    - python
+    - mysql_db
+    - flask_web

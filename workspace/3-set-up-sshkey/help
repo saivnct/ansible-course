@@ -1,0 +1,14 @@
+#ssh-keygen
+    -> /Users/boris9a9/study/ansible/workspace/3-set-up-sshkey/id_rsa
+#chmod 600 id_rsa
+
+#ansible-galaxy install --roles-path roles mikaelflora.ssh_copy_id    
+
+copy content of id_rsa.pub to group vars
+
+#cd roles
+#ansible-galaxy init openssh-server
+#ansible-galaxy init disable-ssh-password
+
+#ansible-playbook playbook.yaml -i inventory --extra-vars "ansible_sudo_pass=123"
+

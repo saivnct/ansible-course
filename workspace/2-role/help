@@ -1,0 +1,5 @@
+ansible-galaxy init mysql_db
+ansible-galaxy init flask_web
+
+
+ ansible-playbook playbook.yaml -i inventory --extra-vars "ansible_sudo_pass=123"

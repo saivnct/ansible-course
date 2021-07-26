@@ -1,0 +1,6 @@
+ansible target1 -m ping -i 1-inventory.txt
+
+ansible all -m ping -i 1-inventory.txt
+
+Run with sudo pass
+    ansible-playbook 4-playbook-variables.yaml -i 1-inventory.txt --extra-vars "ansible_sudo_pass=123"

@@ -1,0 +1,8 @@
+-
+  name: Copy file to targets
+  hosts: all
+  tasks:
+    - name: Copy file
+      copy:
+        src: /Users/boris9a9/Downloads/145259495_1082558702219110_6510803650805437675_n.png
+        dest: /tmp/145259495_1082558702219110_6510803650805437675_n.png

@@ -1,0 +1,5 @@
+---
+# vars file for ssh-copy-id
+user: '{{ansible_user}}'
+ssh_keys:
+  - '{{ssh_key}}'

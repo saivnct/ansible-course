@@ -1,0 +1,42 @@
+- name: Install MYSQL
+  become: yes
+  apt: name={{item}} state=present
+  with_items:
+    - mariadb-server
+    - mariadb-client
+    - libmysqlclient-dev
+
+- name: Start MySQL
+  become: yes
+  service:
+    name: mysql
+    state: started
+    #when the server restarts, the service will automatically be started
+    enabled: yes
+
+- name: Install the mysqlclient through pip
+  become: yes
+  pip: 
+    name: mysqlclient
+    state: present
+
+- name: Create App database
+  become: yes
+  mysql_db: 
+    login_user: root
+    login_password: ''
+    login_unix_socket: /run/mysqld/mysqld.sock
+    name: '{{db_name}}'
+    state: present
+
+- name: Create database user
+  become: yes
+  mysql_user:
+    login_user: root
+    login_password: ''
+    login_unix_socket: /run/mysqld/mysqld.sock
+    name: '{{db_user}}'
+    password: '{{db_pass}}'
+    priv: '*.*:ALL'
+    state: present
+    host: '%'

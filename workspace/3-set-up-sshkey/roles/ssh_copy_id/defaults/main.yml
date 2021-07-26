@@ -1,0 +1,4 @@
+---
+# defaults file for ssh-copy-id
+user: root
+force: false

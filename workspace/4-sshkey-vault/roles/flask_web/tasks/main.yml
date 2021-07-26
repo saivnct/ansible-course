@@ -1,0 +1,23 @@
+---
+# tasks file for flask_web
+- name: Install Python Flask dependency
+  become: yes
+  pip: 
+    name: '{{item}}'
+    state: present
+  with_items:
+    - flask
+    - flask-mysql
+
+- name: Create directory
+  file:
+    path: /home/gbb/web-app
+    state: directory
+    mode: '0775'
+
+- name: Copy source code
+  copy: src=app.py dest=/home/gbb/web-app/app.py
+
+- name: Start web server
+  shell: FLASK_APP=/home/gbb/web-app/app.py nohup flask run --host=0.0.0.0 &
+

@@ -1,0 +1,13 @@
+---
+# tasks file for openssh-server
+- name: install openssh-server
+  become: yes
+  apt: name=openssh-server state=present
+
+- name: Start SSH
+  become: yes
+  service:
+    name: ssh
+    state: started
+    #when the server restarts, the service will automatically be started
+    enabled: yes  

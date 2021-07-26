@@ -1,0 +1,7 @@
+- name: set up ssh by 1 key for all servers
+  hosts: servers
+  become: yes
+  roles:
+    - openssh-server
+    - ssh_copy_id
+    - disable-ssh-password

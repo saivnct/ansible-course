@@ -1,0 +1,21 @@
+---
+# tasks file for ssh-copy-id
+- name: ensure user exists
+  user:
+    name: "{{ user }}"
+    state: present
+  when: force
+- name: add ssh authorized keys
+  authorized_key:
+    user: "{{ user }}"
+    key: "{{ item }}"
+    state: present
+  loop: "{{ ssh_keys }}"
+  when: ssh_keys is defined
+- name: remove old ssh authorized keys
+  authorized_key:
+    user: "{{ user }}"
+    key: "{{ item }}"
+    state: absent
+  loop: "{{ old_ssh_keys }}"
+  when: old_ssh_keys is defined

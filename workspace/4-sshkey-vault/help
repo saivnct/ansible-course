@@ -1,0 +1,9 @@
+ansible-vault encrypt inventory
+    -> 123
+ansible-vault encrypt group_vars/servers.yml 
+    -> 123
+
+ansible-playbook playbook.yaml -i inventory --ask-vault-pass
+
+ansible-vault view inventory
+ansible-vault view group_vars/servers.yml 
